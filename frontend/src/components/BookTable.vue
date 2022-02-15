@@ -219,6 +219,10 @@ export default {
           `/books/${book_id}`);
         this.error = "";
         this.success = "Livro removido com sucesso. Atualize a busca para conferir.";
+        const index = this.books.indexOf(book=> {
+          book.id === book_id
+        });
+        this.books.splice(index, 1);
       } catch (e) {
         this.success = "";
         this.error =
@@ -243,7 +247,6 @@ export default {
   display: table;
   transition: opacity 0.3s ease;
 }
-
 .modal-wrapper {
   display: table-cell;
   vertical-align: middle;

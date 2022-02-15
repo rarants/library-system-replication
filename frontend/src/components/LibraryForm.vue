@@ -24,16 +24,9 @@
         <i class="fas fa-exclamation-triangle mr-4" />
       </span>
     </div>
-    <!-- <div class="card m-5">
-      <div class="card-body">
-        <div class="accordion accordion-flush" id="accordionExample">
-          <search-book :books="books"/>
-          <add-book />
-          <edit-book />
-          <remove-book />
-        </div>
-      </div>
-    </div> -->
+    <div class="alert alert-success center mx-5" role="alert" v-if="success">
+      {{ success }}
+    </div>
     <div class="row m-5">
       <!-- Insert book -->
       <div class="col-lg-6 col-sm-12">
@@ -206,178 +199,15 @@
           </div>
         </div>
       </div>
-      <!-- Edit book -->
-      <!-- <div class="col-lg-6 col-sm-12">
-        <div class="card m-5">
-          <div class="card-header">
-            <h5 class="card-title mt-2">Editar livro</h5>
-          </div>
-          <div class="card-body">
-            <div class="row">
-              <div class="col-lg-12 mb-3">
-                <label for="isbn" class="form-label">ISBN</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="isbn"
-                  placeholder="Informe o ISBN do livro"
-                  v-model="editBookIsbn"
-                />
-              </div>
-              <div class="center mb-3">
-                <a
-                  href="#"
-                  class="btn btn-secondary"
-                  @click="handleSearchInEditBook()"
-                >
-                  Buscar
-                </a>
-              </div>
-            </div>
-            <div v-if="model.editBook">
-              <hr />
-              <div class="row">
-                <div class="col-lg-6 mb-3">
-                  <label for="title" class="form-label">Título</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="title"
-                    placeholder="Informe o título do livro"
-                    v-model="model.editBook.title"
-                  />
-                </div>
-                <div class="col-lg-6 mb-3">
-                  <label for="isbn" class="form-label">ISBN</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="isbn"
-                    placeholder="Informe o ISBN do livro"
-                    v-model="model.editBook.isbn"
-                  />
-                </div>
-                <div class="col-lg-6 mb-3">
-                  <label for="genre" class="form-label">Gênero</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="genre"
-                    placeholder="Informe o gênero do livro"
-                    v-model="model.editBook.genre"
-                  />
-                </div>
-                <div class="col-lg-6 mb-3">
-                  <label for="edition" class="form-label">Edição</label>
-                  <input
-                    type="number"
-                    class="form-control"
-                    id="edition"
-                    placeholder="Informe a edição do livro"
-                    v-model="model.editBook.edition"
-                  />
-                </div>
-                <div class="col-lg-6 mb-3">
-                  <label for="publishing_company" class="form-label">
-                    Editora
-                  </label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="publishing_company"
-                    placeholder="Informe a editora do livro"
-                    v-model="model.editBook.publishing_company"
-                  />
-                </div>
-                <div class="col-lg-6 mb-3">
-                  <label for="year" class="form-label">Ano</label>
-                  <input
-                    type="number"
-                    class="form-control"
-                    id="year"
-                    placeholder="Informe o ano do livro"
-                    v-model="model.editBook.year"
-                  />
-                </div>
-                <div class="col-12 mb-3">
-                  <label for="authors" class="form-label">Autores</label>
-                  <textarea
-                    class="form-control"
-                    id="authors"
-                    rows="3"
-                    placeholder="Informe os autores do livro"
-                    v-model="model.editBook.authors"
-                  ></textarea>
-                </div>
-              </div>
-              <div class="center">
-                <a
-                  href="#"
-                  class="btn btn-primary"
-                  @click="handleSubmitEditBook()"
-                >
-                  Salvar alterações
-                </a>
-              </div>
-            </div>
-            <div v-else>
-              <div class="alert alert-warning center" role="alert">
-                <span>
-                  <i class="fas fa-exclamation-triangle mr-4" />
-                </span>
-                Busque o livro pelo seu ISBN antes de continuar
-                <span>
-                  <i class="fas fa-exclamation-triangle mr-4" />
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> -->
-      <!-- Remove book -->
-      <!-- <div class="col-lg-6 col-sm-12">
-        <div class="card m-5">
-          <div class="card-header">
-            <h5 class="card-title mt-2">Remover livro</h5>
-          </div>
-          <div class="card-body">
-            <div class="row">
-              <div class="col-lg-12 mb-3">
-                <label for="isbn" class="form-label">ISBN</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="isbn"
-                  placeholder="Informe o ISBN do livro"
-                  v-model="removeBookIsbn"
-                />
-              </div>
-              <div class="center">
-                <a
-                  href="#"
-                  class="btn btn-primary"
-                  @click="handleSubmitRemoveBook()"
-                >
-                  Remover
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> -->
     </div>
   </div>
 </template>
 <script>
 import api from "@/services/api";
-/* import AddBook from './Accordion/AddBook.vue'
-import EditBook from './Accordion/EditBook.vue'
-import RemoveBook from './Accordion/RemoveBook.vue'
-import SearchBook from './Accordion/SearchBook.vue' */
 import BookTable from "./BookTable.vue";
 
 export default {
-  components: { /*EditBook, RemoveBook,  AddBook, SearchBook, */ BookTable },
+  components: { BookTable },
   name: "library-form",
   data() {
     return {
@@ -433,6 +263,7 @@ export default {
       },
       books: [],
       error: "",
+      success: ""
     };
   },
   methods: {
@@ -440,9 +271,11 @@ export default {
       try {
         const { data } = await api.post("/books", this.model.newBook);
         this.books = data;
-        console.log(this.books, this.selectedFilter, this.searchBook);
         this.error = "";
+        this.success = "Livro cadastrado com sucesso. Atualize a busca para conferir.";
+        this.cleanModel();
       } catch (e) {
+        this.success = "";
         this.error =
           "Ocorreu um erro, confira as informações e tente novamente";
       }
@@ -463,15 +296,13 @@ export default {
           "Ocorreu um erro, confira as informações e tente novamente";
       }
     },
-    async handleSubmitEditBook() {
-      console.log(this.model.editBook);
-    },
-    async handleSubmitRemoveBook() {
-      console.log(this.removeBookIsbn);
-    },
-    async handleSearchInEditBook() {
-      console.log(this.editBookIsbn);
-    },
+    cleanModel() {
+      for (const att in this.model.newBook){
+        if (att === 'edition' || att === 'year') this.model.newBook[att] = null;
+        else this.model.newBook[att] = "";
+      }
+      this.model.editBook = "";
+    }
   },
   computed: {
     getFilterName() {
