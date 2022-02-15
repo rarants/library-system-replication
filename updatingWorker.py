@@ -80,7 +80,7 @@ files_list = []
 files_runned = []
 
 # 2 start
-setInterval(readExecuteDumps, 1)
+setInterval(readExecuteDumps, 15)
 
 
 

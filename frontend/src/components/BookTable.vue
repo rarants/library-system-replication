@@ -222,7 +222,8 @@ export default {
         const index = this.books.indexOf(book=> {
           book.id === book_id
         });
-        this.books.splice(index, 1);
+        console.log(index)
+        //this.books.splice(index, 1)
       } catch (e) {
         this.success = "";
         this.error =

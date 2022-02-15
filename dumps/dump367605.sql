@@ -1,0 +1,1 @@
+UPDATE books SET title='Volta ao Mundo: Um Guia Irreverente', genre='Gastronomia e CulinsÂ¡ria', edition=1, publishing_company='Intrinseca', year=2021, authors='Anthony Bourdain, Laurie Woolever' WHERE id = 7;

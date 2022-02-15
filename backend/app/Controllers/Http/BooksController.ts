@@ -32,9 +32,9 @@ export default class BooksController {
   public async update({ params, request }: HttpContextContract) {
     const data = await request.validate(UpdateBookValidator)
     const book = await Book.findOrFail(params.id)
-    this.writeFile(data, 'update')
     book.merge(data)
     await book.save()
+    this.writeFile(book, 'update')
     return book
   }
 
@@ -65,11 +65,11 @@ export default class BooksController {
         book.edition + ", publishing_company='" + 
         book.publishing_company + "', year=" +
         book.year + ", authors='" + 
-        book.authors + "' WHERE id = , " +
+        book.authors + "' WHERE id = " +
         book.id  + ";\n"
     } else if (method === 'destroy') {
       query = "DELETE FROM books WHERE id =  " + 
-        book.id + ");\n"
+        book.id + ";\n"
     }
     const fs = require('fs');
     const data = query;

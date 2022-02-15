@@ -6,7 +6,7 @@
       <p>
         Código completo disponível no
         <a
-          href="https://cli.vuejs.org"
+          href="https://github.com/rarants/library-system-replication"
           target="_blank"
           rel="noopener"
           class="salmon"
