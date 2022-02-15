@@ -289,7 +289,6 @@ export default {
           `/books${filter}`
         );
         this.books = data;
-        console.log(this.books, this.selectedFilter, this.searchBook);
         this.error = "";
       } catch (e) {
         this.error =

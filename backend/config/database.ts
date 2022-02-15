@@ -43,12 +43,26 @@ const databaseConfig: DatabaseConfig = {
         database: Env.get('MYSQL_DB_NAME'),
       },
       migrations: {
-        naturalSort: true,
+        paths: ['./database/migrations/master']
+      },
+      healthCheck: false,
+      debug: false,
+      seeders: {
+        paths: ['./database/seeders/master']
+      }
+    },
+    mysql2: {
+      client: 'mysql',
+      connection: {
+        host: Env.get('MYSQL_HOST'),
+        port: Env.get('MYSQL_PORT'),
+        user: Env.get('MYSQL_USER'),
+        password: Env.get('MYSQL_PASSWORD', ''),
+        database: Env.get('MYSQL_DB_NAME2'),
       },
       healthCheck: false,
       debug: false,
     },
-
   }
 }
 
